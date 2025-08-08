@@ -1,0 +1,5 @@
+sdk.dir=/home/mrdeephang/Android/Sdk
+flutter.sdk=/home/mrdeephang/development/flutter
+cmake.dir=/home/mrdeephang/Android/Sdk/cmake/3.22.1
+flutter.buildMode=debug
+flutter.versionName=0.1.0
