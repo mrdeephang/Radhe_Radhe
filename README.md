@@ -33,4 +33,4 @@ This is a Flutter app to write and save daily manifestations and gratitude notes
 
 ## Developer
 
-Made by Deephang Thegim
+© 2025 Deephang Thegim. All rights reserved.
