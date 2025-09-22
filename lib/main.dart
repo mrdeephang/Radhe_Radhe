@@ -1,32 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:manifest_app/providers/manifestation_provider.dart';
+import 'package:manifest_app/providers/theme_provider.dart';
 import 'package:manifest_app/screens/home.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const ManifestationApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => ManifestationProvider()),
+      ],
+      child: const ManifestationApp(),
+    ),
+  );
 }
 
-class ManifestationApp extends StatefulWidget {
+class ManifestationApp extends StatelessWidget {
   const ManifestationApp({super.key});
 
   @override
-  State<ManifestationApp> createState() => _ManifestationAppState();
-}
-
-class _ManifestationAppState extends State<ManifestationApp> {
-  bool isDarkMode = false;
-
-  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Manifestation App',
-      debugShowCheckedModeBanner: false,
-      theme: isDarkMode
-          ? ThemeData.dark()
-          : ThemeData(primarySwatch: Colors.purple),
-      home: ManifestationHomePage(
-        toggleTheme: () => setState(() => isDarkMode = !isDarkMode),
-        isDarkMode: isDarkMode,
-      ),
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        return MaterialApp(
+          title: 'Manifestation App',
+          debugShowCheckedModeBanner: false,
+          theme: themeProvider.currentTheme,
+          home: const ManifestationHomePage(),
+        );
+      },
     );
   }
 }
