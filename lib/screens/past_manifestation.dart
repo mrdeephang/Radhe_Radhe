@@ -236,12 +236,11 @@ class PastManifestationsPage extends StatelessWidget {
         shadowColor: primaryColor.withOpacity(0.1),
         child: Container(
           decoration: BoxDecoration(
+            border: Border.all(width: 1, color: Colors.grey),
             borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [darkColor, primaryColor],
-            ),
+            color: Provider.of<ThemeProvider>(context, listen: false).isDarkMode
+                ? darkColor
+                : primaryColor,
           ),
           child: Padding(
             padding: const EdgeInsets.all(20),
@@ -262,18 +261,13 @@ class PastManifestationsPage extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(
-                            Icons.calendar_today,
-                            size: 14,
-                            color: primaryColor,
-                          ),
+                          Icon(Icons.calendar_today, size: 14),
                           const SizedBox(width: 6),
                           Text(
                             item['time'] ?? '',
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
-                              color: primaryColor,
                             ),
                           ),
                         ],
@@ -393,7 +387,10 @@ class PastManifestationsPage extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancel'),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(color: primaryColor),
+              ),
             ),
             ElevatedButton(
               onPressed: () {
@@ -446,7 +443,7 @@ class PastManifestationsPage extends StatelessWidget {
             children: [
               Icon(Icons.warning_amber_rounded, color: Colors.red),
               SizedBox(width: 10),
-              Text('Clear All Manifestations'),
+              Text('Clear All'),
             ],
           ),
           content: const Text(
@@ -455,7 +452,10 @@ class PastManifestationsPage extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancel'),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(color: primaryColor),
+              ),
             ),
             ElevatedButton(
               onPressed: () {

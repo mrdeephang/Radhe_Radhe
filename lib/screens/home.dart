@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:manifest_app/const/color.dart';
+import 'package:manifest_app/const/helpers.dart';
 import 'package:manifest_app/providers/manifestation_provider.dart';
 import 'package:manifest_app/providers/theme_provider.dart';
 import 'package:manifest_app/screens/past_manifestation.dart';
@@ -28,12 +29,64 @@ class ManifestationHomePage extends StatelessWidget {
         actions: [
           Consumer<ThemeProvider>(
             builder: (context, themeProvider, child) {
-              return IconButton(
-                icon: Icon(
-                  themeProvider.isDarkMode ? Icons.light_mode : Icons.dark_mode,
-                  color: Colors.white,
-                ),
-                onPressed: themeProvider.toggleTheme,
+              return PopupMenuButton<String>(
+                icon: Icon(getThemeIcon(themeProvider), color: Colors.white),
+                onSelected: (value) {
+                  handleThemeChange(value, themeProvider);
+                },
+                itemBuilder: (BuildContext context) => [
+                  PopupMenuItem<String>(
+                    value: 'system',
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.brightness_auto,
+                          color: themeProvider.currentThemeMode == 'system'
+                              ? Colors.purple
+                              : Colors.grey,
+                        ),
+                        SizedBox(width: 10),
+                        Text('System Default'),
+                        if (themeProvider.currentThemeMode == 'system')
+                          Icon(Icons.check, color: Colors.purple, size: 16),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem<String>(
+                    value: 'light',
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.light_mode,
+                          color: themeProvider.currentThemeMode == 'light'
+                              ? Colors.amber
+                              : Colors.grey,
+                        ),
+                        SizedBox(width: 10),
+                        Text('Light Mode'),
+                        if (themeProvider.currentThemeMode == 'light')
+                          Icon(Icons.check, color: Colors.amber, size: 16),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem<String>(
+                    value: 'dark',
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.dark_mode,
+                          color: themeProvider.currentThemeMode == 'dark'
+                              ? Colors.purple
+                              : Colors.grey,
+                        ),
+                        SizedBox(width: 10),
+                        Text('Dark Mode'),
+                        if (themeProvider.currentThemeMode == 'dark')
+                          Icon(Icons.check, color: Colors.purple, size: 16),
+                      ],
+                    ),
+                  ),
+                ],
               );
             },
           ),
@@ -234,7 +287,7 @@ class _ManifestationFormState extends State<ManifestationForm>
 
               _buildTextField(
                 controller: gratitudeController,
-                label: "Gratitude Practice",
+                label: "Gratitude",
                 hint:
                     "I'm grateful for my health, family, and opportunities...",
                 icon: Icons.favorite_rounded,
@@ -329,7 +382,10 @@ class _ManifestationFormState extends State<ManifestationForm>
                           children: [
                             Icon(Icons.check_circle, color: Colors.white),
                             SizedBox(width: 10),
-                            Text("Manifestation Saved Successfully!"),
+                            Text(
+                              "Manifestation Saved!",
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ],
                         ),
                         backgroundColor:
