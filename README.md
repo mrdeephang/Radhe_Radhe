@@ -1,4 +1,4 @@
-# Manifestation App
+# Radhe Radhe
 
 This is a Flutter app to write and save daily manifestations and gratitude notes. It also shows past entries and supports dark mode.
 
@@ -6,8 +6,8 @@ This is a Flutter app to write and save daily manifestations and gratitude notes
 
 - Write and save manifestation and gratitude
 - Shows saved entries with date and time
-- Clear all saved entries
-- Toggle between light and dark mode
+- Clear all and single saved entries
+- Toggle between system, light and dark mode
 - Daily affirmation message
 
 ## How to Run
@@ -15,14 +15,13 @@ This is a Flutter app to write and save daily manifestations and gratitude notes
 1. Make sure Flutter is installed
 2. Open the project folder in VS Code or Android Studio
 3. Run this command in terminal:
-
    flutter pub get  
    flutter run
 
 ## Requirements
 
-- Flutter SDK
-- Dart
+- Flutter SDK (3.35...)
+- Dart (3.9....)
 - Android Studio or VS Code
 
 ## Future Improvements
