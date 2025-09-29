@@ -402,10 +402,19 @@ class PastManifestationsPage extends StatelessWidget {
                       children: [
                         Icon(Icons.check_circle, color: Colors.white),
                         SizedBox(width: 10),
-                        Text('Manifestation deleted'),
+                        Text(
+                          'Manifestation deleted',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ],
                     ),
-                    backgroundColor: Colors.green,
+                    backgroundColor:
+                        Provider.of<ThemeProvider>(
+                          context,
+                          listen: false,
+                        ).isDarkMode
+                        ? darkColor
+                        : Colors.green,
                     behavior: SnackBarBehavior.floating,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
