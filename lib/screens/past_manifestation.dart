@@ -398,6 +398,7 @@ class PastManifestationsPage extends StatelessWidget {
                 Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
+                    duration: Duration(milliseconds: 500),
                     content: const Row(
                       children: [
                         Icon(Icons.check_circle, color: Colors.white),
@@ -472,6 +473,7 @@ class PastManifestationsPage extends StatelessWidget {
                 Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
+                    duration: Duration(milliseconds: 500),
                     content: const Row(
                       children: [
                         Icon(Icons.check_circle, color: Colors.white),

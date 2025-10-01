@@ -356,6 +356,7 @@ class _ManifestationFormState extends State<ManifestationForm>
                     if (manifest.isEmpty || gratitude.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          duration: Duration(milliseconds: 500),
                           content: const Text("Please fill in both fields"),
                           backgroundColor: Colors.orange,
                           behavior: SnackBarBehavior.floating,
@@ -378,6 +379,7 @@ class _ManifestationFormState extends State<ManifestationForm>
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
+                        duration: Duration(milliseconds: 500),
                         content: const Row(
                           children: [
                             Icon(Icons.check_circle, color: Colors.white),
