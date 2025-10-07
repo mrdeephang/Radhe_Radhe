@@ -121,14 +121,7 @@ flutter build apk --release
 flutter build ios --release
 ```
 
-## Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
-
-## Support
-
-If you like this project, please give it a ⭐️!
-
 ## License
 
 © 2025 Deephang Thegim. All rights reserved.
+
